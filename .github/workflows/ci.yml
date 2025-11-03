@@ -1,0 +1,39 @@
+# .github/workflows/ci.yml
+
+name: Node.js CI
+
+# どのタイミングで実行するか
+on:
+  push:
+    branches: [ "main" ] # mainブランチにプッシュされた時
+  pull_request:
+    branches: [ "main" ] # mainブランチへのプルリクエストが作成された時
+
+# 実行する内容
+jobs:
+  build:
+    runs-on: ubuntu-latest # Ubuntu環境で実行
+
+    steps:
+      # 1. リポジトリのコードをチェックアウト
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Node.js環境をセットアップ
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20" # package.jsonのenginesに合わせて変更可
+          cache: 'npm' # npmのキャッシュを利用
+
+      # 3. 依存関係をインストール (package-lock.jsonに基づき高速にインストール)
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. リントを実行 (package.jsonの "lint": "eslint" を実行)
+      - name: Run lint
+        run: npm run lint
+
+      # 5. ビルドを実行 (package.jsonの "build": "next build" を実行)
+      - name: Run build
+        run: npm run build
