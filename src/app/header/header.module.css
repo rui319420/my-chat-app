@@ -1,4 +1,5 @@
 .Header {
-  border-bottom: solid 1px;
+  display: flex;
+  border-bottom: #01ff01 solid 1px;
   padding: 5px;
 }

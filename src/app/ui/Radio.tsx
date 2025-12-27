@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Radio = () => {
   return (
     <StyledWrapper>
-      <div className="container">
+      <div className="radio-container">
         <div className="radio-wrapper">
           <input className="input" name="btn" id="value-1" type="radio" />
           <div className="btn">
@@ -35,7 +35,7 @@ const Radio = () => {
 }
 
 const StyledWrapper = styled.div`
-  .container {
+  .radio-container {
     display: flex;
     flex-direction: row;
   }
