@@ -1,5 +1,6 @@
 .Header {
   display: flex;
   border-bottom: #01ff01 solid 1px;
+  border-right: #01ff01 solid 1px;
   padding: 5px;
 }
